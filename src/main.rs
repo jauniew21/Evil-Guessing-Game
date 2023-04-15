@@ -3,6 +3,7 @@ use std::cmp::Ordering;
 use rand::Rng;
 
 fn main() {
+    let mut count = 0;
     let secr_num = rand::thread_rng().gen_range(100000000..=999999999);
 
     println!("Guess, I Dare You!");
@@ -17,6 +18,7 @@ fn main() {
         println!("Input your Guess.");
 
         let mut guess = String::new();
+        count += 1;
 
         io::stdin()
             .read_line(&mut guess)
@@ -27,7 +29,7 @@ fn main() {
             Err(_) => continue,
         };
 
-        println!("You Guessed {guess}");
+        println!("You Guessed {guess}. Guess #{count}");
 
         let u_digits: Vec<_> = guess.to_string().chars().map(|d| d.to_digit(10).unwrap()).collect();
 
